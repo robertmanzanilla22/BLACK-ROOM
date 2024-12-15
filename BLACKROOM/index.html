@@ -19,8 +19,14 @@
     <nav class="sticky-nav">
         <a href="#videos">Videos</a>
         <a href="#events">Events</a>
-        <a href="#contact">Contact</a>
         <a href="#shop">Shop</a>
+        <a href="#calendar">Calendar</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="#contact">Contact</a>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search videos or events...">
+            <button id="search-btn">Search</button>
+        </div>
     </nav>
 
     <!-- Main Content -->
@@ -42,16 +48,60 @@
         <section id="events" class="section">
             <h2>Upcoming Events</h2>
             <div class="events-container">
-                <div class="event-card">
-                    <img src="event1.jpg" alt="Bajo el Sol" class="event-img">
-                    <h3>Bajo el Sol - New Year's Welcoming Rave</h3>
-                    <button>Buy Tickets</button>
+                <!-- Event 1 -->
+                <div class="event-item">
+                    <img src="https://via.placeholder.com/1200x600" alt="Bajo el Sol Event">
+                    <div class="event-info">
+                        <h3>Bajo el Sol - New Year's Welcoming Rave</h3>
+                        <p>Location: Miami, FL</p>
+                        <a href="event-bajo-el-sol.html" class="btn">Buy Tickets</a>
+                        <a href="event-bajo-el-sol.html" class="btn secondary-btn">View Event</a>
+                    </div>
                 </div>
-                <div class="event-card">
-                    <img src="event2.jpg" alt="Tanja Miju" class="event-img">
-                    <h3>Black Room x Clandestine Presents Tanja Miju</h3>
-                    <button>Buy Tickets</button>
+                <!-- Event 2 -->
+                <div class="event-item">
+                    <img src="https://via.placeholder.com/1200x600" alt="Tanja Miju Event">
+                    <div class="event-info">
+                        <h3>Black Room x Clandestine Presents Tanja Miju</h3>
+                        <p>Location: Miami Beach, FL</p>
+                        <a href="event-tanja-miju.html" class="btn">Buy Tickets</a>
+                        <a href="event-tanja-miju.html" class="btn secondary-btn">View Event</a>
+                    </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Shop Section -->
+        <section id="shop" class="section">
+            <h2>Shop</h2>
+            <div class="shop-container">
+                <div class="shop-item">
+                    <img src="https://via.placeholder.com/200x200" alt="Black Room T-Shirt">
+                    <h3>Black Room T-Shirt</h3>
+                    <p>$30.00</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="shop-item">
+                    <img src="https://via.placeholder.com/200x200" alt="Exclusive Hoodie">
+                    <h3>Exclusive Hoodie</h3>
+                    <p>$50.00</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="shop-item">
+                    <img src="https://via.placeholder.com/200x200" alt="Event Poster">
+                    <h3>Event Poster</h3>
+                    <p>$15.00</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calendar Section -->
+        <section id="calendar" class="section">
+            <h2>Event Calendar</h2>
+            <p>View upcoming events and save the dates to your calendar!</p>
+            <div class="calendar-placeholder">
+                <p>(Embed calendar functionality here in the future.)</p>
             </div>
         </section>
 
@@ -66,30 +116,6 @@
                 <button type="submit">Send</button>
             </form>
         </section>
-
-        <script>
-            const form = document.getElementById('contact-form');
-
-            form.addEventListener('submit', (e) => {
-                const name = form.elements['name'].value.trim();
-                const email = form.elements['email'].value.trim();
-                const message = form.elements['message'].value.trim();
-
-                if (!name || !email || !message) {
-                    alert('All fields are required!');
-                    e.preventDefault();
-                } else if (!/\S+@\S+\.\S+/.test(email)) {
-                    alert('Please enter a valid email!');
-                    e.preventDefault();
-                }
-            });
-        </script>
-
-        <!-- Shop Section -->
-        <section id="shop" class="section">
-            <h2>Shop</h2>
-            <p>Explore exclusive merchandise from The Black Room.</p>
-        </section>
     </main>
 
     <!-- Footer -->
@@ -97,15 +123,18 @@
         <p>&copy; 2024 The Black Room. All rights reserved.</p>
         <div class="social-icons">
             <a href="https://instagram.com" target="_blank" title="Follow us on Instagram">
-                <img src="icons/instagram.png" alt="Instagram">
+                <img src="icons/instagram.png" alt="Instagram Icon">
             </a>
             <a href="https://facebook.com" target="_blank" title="Follow us on Facebook">
-                <img src="icons/facebook.png" alt="Facebook">
+                <img src="icons/facebook.png" alt="Facebook Icon">
             </a>
             <a href="https://youtube.com" target="_blank" title="Follow us on YouTube">
-                <img src="icons/youtube.png" alt="YouTube">
+                <img src="icons/youtube.png" alt="YouTube Icon">
             </a>
         </div>
     </footer>
+
+    <!-- JavaScript -->
+    <script src="scripts.js"></script>
 </body>
 </html>
