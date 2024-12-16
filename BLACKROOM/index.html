@@ -5,8 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Black Room</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
+    <!-- Modal Background -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form">
+                <h3>Login</h3>
+                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <!-- Registration Form -->
+            <form id="signup-form" class="auth-form">
+                <h3>Sign Up</h3>
+                <input type="text" id="signup-name" placeholder="Name" required>
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky-nav">
+        <div class="nav-links">
+            <a href="#videos">Videos</a>
+            <a href="#events">Events</a>
+            <a href="#shop">Shop</a>
+            <a href="#calendar">Calendar</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="auth-buttons">
+            <div class="search-container">
+                <span class="search-icon" id="search-icon">
+                    <i class="fas fa-search"></i>
+                </span>
+                <div class="search-bar" id="search-bar">
+                    <input type="text" id="search-input" placeholder="Search...">
+                </div>
+            </div>
+                                       
+            <a href="#login" id="login-btn">Login</a>
+            <a href="#signup" id="signup-btn">Sign Up</a>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <header class="hero">
         <div class="hero-content">
@@ -15,32 +65,28 @@
         </div>
     </header>
 
-    <!-- Navigation Menu -->
-    <nav class="sticky-nav">
-        <a href="#videos">Videos</a>
-        <a href="#events">Events</a>
-        <a href="#shop">Shop</a>
-        <a href="#calendar">Calendar</a>
-        <a href="gallery.html">Gallery</a>
-        <a href="#contact">Contact</a>
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Search videos or events...">
-            <button id="search-btn">Search</button>
-        </div>
-    </nav>
-
     <!-- Main Content -->
     <main>
         <!-- Videos Section -->
         <section id="videos" class="section">
-            <h2>Latest Videos</h2>
+            <h2>Videos</h2>
+            <div class="video-filters">
+                <button class="filter-btn" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="radio">Radio</button>
+                <button class="filter-btn" data-filter="past-events">Past Events</button>
+                <button class="filter-btn" data-filter="archives">Archives</button>
+                <div class="dropdown">
+                    <button class="filter-btn dropdown-toggle">By Genre</button>
+                    <div class="dropdown-menu">
+                        <button class="filter-btn" data-filter="psy-trance">Psy Trance</button>
+                        <button class="filter-btn" data-filter="hardgroove">Hardgroove</button>
+                        <button class="filter-btn" data-filter="techno">Techno</button>
+                        <button class="filter-btn" data-filter="industrial">Industrial</button>
+                    </div>
+                </div>
+            </div>
             <div class="video-gallery">
-                <button class="filter-btn">All</button>
-                <button class="filter-btn">Past Events</button>
-                <button class="filter-btn">Hardgroove</button>
-                <button class="filter-btn">Psy Trance</button>
-                <button class="filter-btn">Techno</button>
-                <button class="filter-btn">Industrial</button>
+                <!-- Aquí irán las miniaturas de los videos -->
             </div>
         </section>
 
@@ -48,24 +94,20 @@
         <section id="events" class="section">
             <h2>Upcoming Events</h2>
             <div class="events-container">
-                <!-- Event 1 -->
                 <div class="event-item">
                     <img src="https://via.placeholder.com/1200x600" alt="Bajo el Sol Event">
                     <div class="event-info">
                         <h3>Bajo el Sol - New Year's Welcoming Rave</h3>
                         <p>Location: Miami, FL</p>
                         <a href="event-bajo-el-sol.html" class="btn">Buy Tickets</a>
-                        <a href="event-bajo-el-sol.html" class="btn secondary-btn">View Event</a>
                     </div>
                 </div>
-                <!-- Event 2 -->
                 <div class="event-item">
                     <img src="https://via.placeholder.com/1200x600" alt="Tanja Miju Event">
                     <div class="event-info">
                         <h3>Black Room x Clandestine Presents Tanja Miju</h3>
                         <p>Location: Miami Beach, FL</p>
                         <a href="event-tanja-miju.html" class="btn">Buy Tickets</a>
-                        <a href="event-tanja-miju.html" class="btn secondary-btn">View Event</a>
                     </div>
                 </div>
             </div>
@@ -87,12 +129,6 @@
                     <p>$50.00</p>
                     <button>Add to Cart</button>
                 </div>
-                <div class="shop-item">
-                    <img src="https://via.placeholder.com/200x200" alt="Event Poster">
-                    <h3>Event Poster</h3>
-                    <p>$15.00</p>
-                    <button>Add to Cart</button>
-                </div>
             </div>
         </section>
 
@@ -108,8 +144,7 @@
         <!-- Contact Section -->
         <section id="contact" class="section">
             <h2>Contact Us</h2>
-            <p>Want to collaborate or learn more about our events?</p>
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" id="contact-form">
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
                 <textarea name="message" placeholder="Your Message" required></textarea>
@@ -122,15 +157,9 @@
     <footer>
         <p>&copy; 2024 The Black Room. All rights reserved.</p>
         <div class="social-icons">
-            <a href="https://instagram.com" target="_blank" title="Follow us on Instagram">
-                <img src="icons/instagram.png" alt="Instagram Icon">
-            </a>
-            <a href="https://facebook.com" target="_blank" title="Follow us on Facebook">
-                <img src="icons/facebook.png" alt="Facebook Icon">
-            </a>
-            <a href="https://youtube.com" target="_blank" title="Follow us on YouTube">
-                <img src="icons/youtube.png" alt="YouTube Icon">
-            </a>
+            <a href="https://instagram.com" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+            <a href="https://facebook.com" target="_blank"><img src="icons/facebook.png" alt="Facebook"></a>
+            <a href="https://youtube.com" target="_blank"><img src="icons/youtube.png" alt="YouTube"></a>
         </div>
     </footer>
 
