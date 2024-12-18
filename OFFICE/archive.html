@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Archive</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="archive-hero">
+        <h1>Video Archive</h1>
+        <p>Explore past events and live performances.</p>
+    </header>
+
+    <main class="archive-container">
+        <!-- Filtro de categorías -->
+        <div class="filter-bar">
+            <button class="filter-btn" data-category="all">All</button>
+            <button class="filter-btn" data-category="techno">Techno</button>
+            <button class="filter-btn" data-category="psytrance">Psy Trance</button>
+            <button class="filter-btn" data-category="industrial">Industrial</button>
+            <button class="filter-btn" data-category="hardgroove">Hardgroove</button>
+        </div>
+
+        <!-- Lista de videos -->
+        <div class="video-grid">
+            <div class="video-item" data-category="techno">
+                <a href="video-detail.html">
+                    <img src="https://via.placeholder.com/300x200" alt="Techno Event">
+                    <h3>Techno Event - DJ Example</h3>
+                </a>
+            </div>
+            <div class="video-item" data-category="psytrance">
+                <a href="video-detail.html">
+                    <img src="https://via.placeholder.com/300x200" alt="Psy Trance Event">
+                    <h3>Psy Trance Event - DJ Name</h3>
+                </a>
+            </div>
+            <!-- Más videos aquí -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Blackroom. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Black Room</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- SwiperJS CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <!-- SwiperJS JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+    <!-- Modal Background -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form">
+                <h3>Login</h3>
+                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <!-- Registration Form -->
+            <form id="signup-form" class="auth-form">
+                <h3>Sign Up</h3>
+                <input type="text" id="signup-name" placeholder="Name" required>
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky-nav">
+        <div class="nav-links">
+            <!-- Ahora el enlace a videos apunta a videos.html -->
+            <a href="index.html" class="home-btn">Inicio</a>
+            <a href="videos.html">Videos</a>
+            <a href="#events">Events</a>
+            <a href="#shop">Shop</a>
+            <a href="#calendar">Calendar</a>
+            <a href="#gallery">Gallery</a> 
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="auth-buttons">
+            <div class="search-container">
+                <span class="search-icon" id="search-icon">
+                    <i class="fas fa-search"></i>
+                </span>
+                <div class="search-bar" id="search-bar">
+                    <input type="text" id="search-input" placeholder="Search...">
+                </div>
+            </div>
+            <a href="#login" id="login-btn">Login</a>
+            <a href="#signup" id="signup-btn">Sign Up</a>
+            <!-- Botón de Inicio -->
+            
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Welcome to The Black Room</h1>
+            <p>Your gateway to underground music and exclusive events.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Events Section -->
+        <section id="events" class="section">
+            <h2>Upcoming Events</h2>
+            <div class="events-container">
+                <div class="event-item">
+                    <img src="https://via.placeholder.com/1200x600" alt="Bajo el Sol Event">
+                    <div class="event-info">
+                        <h3>Bajo el Sol - New Year's Welcoming Rave</h3>
+                        <p>Location: Miami, FL</p>
+                        <a href="event-bajo-el-sol.html" class="btn">Buy Tickets</a>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <img src="https://via.placeholder.com/1200x600" alt="Tanja Miju Event">
+                    <div class="event-info">
+                        <h3>Black Room x Clandestine Presents Tanja Miju</h3>
+                        <p>Location: Miami Beach, FL</p>
+                        <a href="event-tanja-miju.html" class="btn">Buy Tickets</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Radio Section -->
+        <section id="radio" class="video-carousel">
+            <h2>Radio</h2>
+            <!-- Swiper Container -->
+            <div class="swiper-container">
+                <!-- Left Arrow -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide video-item">
+                        <a href="https://www.youtube.com/watch?v=Lr_FzTxMGRY" target="_blank">
+                            <img src="https://img.youtube.com/vi/Lr_FzTxMGRY/hqdefault.jpg" alt="Video 1">
+                            <p>Radio Set 1</p>
+                        </a>
+                    </div>
+                    <div class="swiper-slide video-item">
+                        <a href="https://www.youtube.com/watch?v=HVIwlYgXCok" target="_blank">
+                            <img src="https://img.youtube.com/vi/HVIwlYgXCok/hqdefault.jpg" alt="Video 2">
+                            <p>Radio Set 2</p>
+                        </a>
+                    </div>
+                    <div class="swiper-slide video-item">
+                        <a href="https://www.youtube.com/watch?v=n85C7QaAwG0" target="_blank">
+                            <img src="https://img.youtube.com/vi/n85C7QaAwG0/hqdefault.jpg" alt="Video 3">
+                            <p>Radio Set 3</p>
+                        </a>
+                    </div>
+                    <div class="swiper-slide video-item">
+                        <a href="https://www.youtube.com/watch?v=LW92C8wx3fc" target="_blank">
+                            <img src="https://img.youtube.com/vi/LW92C8wx3fc/hqdefault.jpg" alt="Video 4">
+                            <p>Radio Set 4</p>
+                        </a>
+                    </div>
+                    <div class="swiper-slide video-item">
+                        <a href="https://www.youtube.com/watch?v=0H2h7t8qu6M" target="_blank">
+                            <img src="https://img.youtube.com/vi/0H2h7t8qu6M/hqdefault.jpg" alt="Video 5">
+                            <p>Radio Set 5</p>
+                        </a>
+                    </div>
+                    <div class="swiper-slide video-item">
+                        <a href="https://www.youtube.com/watch?v=-4bPIGdNJwc" target="_blank">
+                            <img src="https://img.youtube.com/vi/-4bPIGdNJwc/hqdefault.jpg" alt="Video 6">
+                            <p>Radio Set 6</p>
+                        </a>
+                    </div>
+                    <div class="swiper-slide video-item">
+                        <a href="https://www.youtube.com/watch?v=f8GkpPINE_8" target="_blank">
+                            <img src="https://img.youtube.com/vi/f8GkpPINE_8/hqdefault.jpg" alt="Video 7">
+                            <p>Radio Set 7</p>
+                        </a>
+                    </div>
+                    <div class="swiper-slide video-item">
+                        <a href="https://www.youtube.com/watch?v=AAqZ0CMtbrk" target="_blank">
+                            <img src="https://img.youtube.com/vi/AAqZ0CMtbrk/hqdefault.jpg" alt="Video 8">
+                            <p>Radio Set 8</p>
+                        </a>
+                    </div>
+                    <div class="swiper-slide video-item">
+                        <a href="https://www.youtube.com/watch?v=Iiv38ni1C5U" target="_blank">
+                            <img src="https://img.youtube.com/vi/Iiv38ni1C5U/hqdefault.jpg" alt="Video 9">
+                            <p>Radio Set 9</p>
+                        </a>
+                    </div>
+                    <div class="swiper-slide video-item">
+                        <a href="https://www.youtube.com/watch?v=2fGCpYQnFY0" target="_blank">
+                            <img src="https://img.youtube.com/vi/2fGCpYQnFY0/hqdefault.jpg" alt="Video 10">
+                            <p>Radio Set 10</p>
+                        </a>
+                    </div>
+                </div>
+                <!-- Right Arrow -->
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
+
+        <!-- Past Events Section -->
+        <div class="video-category">
+            <h3>Past Events</h3>
+            <!-- Latest Videos Section -->
+            <section id="latest-videos" class="video-carousel">
+                <div class="swiper-container">
+                    <!-- Flecha Izquierda -->
+                    <div class="swiper-button-prev"></div>
+
+                    <!-- Videos -->
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide video-item">
+                            <a href="https://www.youtube.com/watch?v=-7EGy2Fd1_8" target="_blank">
+                                <img src="https://img.youtube.com/vi/-7EGy2Fd1_8/hqdefault.jpg" alt="Video 1">
+                                <p>Latest Video 1</p>
+                            </a>
+                        </div>
+                        <div class="swiper-slide video-item">
+                            <a href="https://www.youtube.com/watch?v=PooTCAT3_MI" target="_blank">
+                                <img src="https://img.youtube.com/vi/PooTCAT3_MI/hqdefault.jpg" alt="Video 2">
+                                <p>Latest Video 2</p>
+                            </a>
+                        </div>
+                        <div class="swiper-slide video-item">
+                            <a href="https://www.youtube.com/watch?v=EXs90Nl8jkc" target="_blank">
+                                <img src="https://img.youtube.com/vi/EXs90Nl8jkc/hqdefault.jpg" alt="Video 3">
+                                <p>Latest Video 3</p>
+                            </a>
+                        </div>
+                        <div class="swiper-slide video-item">
+                            <a href="https://www.youtube.com/watch?v=JA_UcTZgSCE" target="_blank">
+                                <img src="https://img.youtube.com/vi/JA_UcTZgSCE/hqdefault.jpg" alt="Video 4">
+                                <p>Latest Video 4</p>
+                            </a>
+                        </div>
+                        <div class="swiper-slide video-item">
+                            <a href="https://www.youtube.com/watch?v=L0xHprbnJPk" target="_blank">
+                                <img src="https://img.youtube.com/vi/L0xHprbnJPk/hqdefault.jpg" alt="Video 5">
+                                <p>Latest Video 5</p>
+                            </a>
+                        </div>
+                        <div class="swiper-slide video-item">
+                            <a href="https://www.youtube.com/watch?v=zDoM4_kB6XU" target="_blank">
+                                <img src="https://img.youtube.com/vi/zDoM4_kB6XU/hqdefault.jpg" alt="Video 6">
+                                <p>Latest Video 6</p>
+                            </a>
+                        </div>
+                        <div class="swiper-slide video-item">
+                            <a href="https://www.youtube.com/watch?v=tMNI2gwQZGw" target="_blank">
+                                <img src="https://img.youtube.com/vi/tMNI2gwQZGw/hqdefault.jpg" alt="Video 7">
+                                <p>Latest Video 7</p>
+                            </a>
+                        </div>
+                        <div class="swiper-slide video-item">
+                            <a href="https://www.youtube.com/watch?v=X4JskmCsGOA" target="_blank">
+                                <img src="https://img.youtube.com/vi/X4JskmCsGOA/hqdefault.jpg" alt="Video 8">
+                                <p>Latest Video 8</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Flecha Derecha -->
+                    <div class="swiper-button-next"></div>
+                </div>
+            </section>
+
+            <!-- Archives Section -->
+            <div class="video-category">
+                <h3>Archives</h3>
+                <div class="swiper-container archives-carousel">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide video-item">
+                            <img src="https://via.placeholder.com/400x250" alt="Archive Video 1">
+                            <p>Archive Video 1</p>
+                        </div>
+                        <!-- Agrega más videos aquí -->
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shop Section -->
+        <section id="shop" class="section">
+            <h2>Shop</h2>
+            <div class="shop-container">
+                <div class="shop-item">
+                    <img src="https://via.placeholder.com/200x200" alt="Black Room T-Shirt">
+                    <h3>Black Room T-Shirt</h3>
+                    <p>$30.00</p>
+                    <button>Add to Cart</button>
+                </div>
+                <div class="shop-item">
+                    <img src="https://via.placeholder.com/200x200" alt="Exclusive Hoodie">
+                    <h3>Exclusive Hoodie</h3>
+                    <p>$50.00</p>
+                    <button>Add to Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Calendar Section -->
+        <section id="calendar" class="section">
+            <h2>Event Calendar</h2>
+            <p>View upcoming events and save the dates to your calendar!</p>
+            <div class="calendar-placeholder">
+                <p>(Embed calendar functionality here in the future.)</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2>Contact Us</h2>
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 The Black Room. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://instagram.com" target="_blank"><img src="icons/instagram.png" alt="Instagram"></a>
+            <a href="https://facebook.com" target="_blank"><img src="icons/facebook.png" alt="Facebook"></a>
+            <a href="https://youtube.com" target="_blank"><img src="icons/youtube.png" alt="YouTube"></a>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="scripts.js"></script>
+    <!-- Swiper.js JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</body>
+</html>

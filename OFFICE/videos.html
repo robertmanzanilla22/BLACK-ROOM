@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <nav class="sticky-nav">
+        <div class="nav-links">
+            <!-- Ahora el enlace a videos apunta a videos.html -->
+            <a href="index.html" class="home-btn">Inicio</a>
+            <a href="videos.html">Videos</a>
+            <a href="#events">Events</a>
+            <a href="#shop">Shop</a>
+            <a href="#calendar">Calendar</a>
+            <a href="#gallery">Gallery</a> 
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="auth-buttons">
+            <div class="search-container">
+                <span class="search-icon" id="search-icon">
+                    <i class="fas fa-search"></i>
+                </span>
+                <div class="search-bar" id="search-bar">
+                    <input type="text" id="search-input" placeholder="Search...">
+                </div>
+            </div>
+            <a href="#login" id="login-btn">Login</a>
+            <a href="#signup" id="signup-btn">Sign Up</a>
+            <!-- Botón de Inicio -->
+            
+        </div>
+    </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videos - The Black Room</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header class="video-header">
+        <h1>Videos</h1>
+        <p>Explora nuestros sets exclusivos y encuentra tu próximo favorito.</p>
+    </header>
+
+    <!-- Buscador y Filtros -->
+    <section class="search-filters">
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Buscar videos por nombre o DJ...">
+            <button id="search-btn">🔍</button>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filters">
+            <!-- Filtro por Género -->
+            <select id="genre-filter">
+                <option value="all">Todos los Géneros</option>
+                <option value="hardtechno">Hardtechno</option>
+                <option value="hardgroove">Hardgroove</option>
+                <option value="peak-time">Peak Time</option>
+                <option value="hypnotic">Hypnotic</option>
+                <option value="industrial">Industrial</option>
+                <option value="neo-rave">Neo Rave</option>
+                <option value="psy-trance">Psy Trance</option>
+            </select>
+
+            <!-- Filtro por Año -->
+            <select id="year-filter">
+                <option value="all">Todos los Años</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+            </select>
+
+            <!-- Filtro por Tipo de Evento -->
+            <select id="event-filter">
+                <option value="all">Todos los Eventos</option>
+                <option value="festival">Festival</option>
+                <option value="rave">Rave</option>
+                <option value="radio-set">Radio Set</option>
+                <option value="en-vivo">En Vivo</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Grilla de Videos -->
+    <main class="video-grid">
+        <!-- Video 1 -->
+        <div class="video-card" data-video="https://www.youtube.com/embed/dQw4w9WgXcQ" data-audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+            <div class="video-container">
+                <img src="https://via.placeholder.com/150x100" alt="Video Placeholder">
+                <video muted loop>
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-info">
+                <h3>Video 1</h3>
+                <p>DJ: XYZ</p>
+                <p>Género: Hardtechno</p>
+            </div>
+            <div class="video-options">
+                <button class="playlist-btn" title="Añadir a Playlist"></button>
+                <button class="like-btn" title="Añadir a Favoritos"></button>
+                <button class="audio-btn" title="Reproducir Audio"></button>
+                <button class="video-btn" title="Reproducir Video"></button>
+            </div>
+        </div>
+
+        <!-- Otros videos siguen el mismo formato -->
+    </main>
+
+    <!-- Modal Emergente -->
+    <div id="video-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="video-player"></div>
+        </div>
+    </div>
+
+    <!-- Reproductor de Audio -->
+    <div id="audio-player-container">
+        <audio id="audio-player" controls>
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+</html>
