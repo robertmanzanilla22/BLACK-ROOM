@@ -627,3 +627,113 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash; // Captura el hash de la URL (#login o #signup)
+    const loginTab = document.getElementById('login-tab');
+    const signupTab = document.getElementById('signup-tab');
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+
+    // Cambia la sección activa según el hash
+    if (hash === '#signup') {
+        signupTab.classList.add('active');
+        loginTab.classList.remove('active');
+        signupForm.classList.add('active');
+        loginForm.classList.remove('active');
+    } else {
+        loginTab.classList.add('active');
+        signupTab.classList.remove('active');
+        loginForm.classList.add('active');
+        signupForm.classList.remove('active');
+    }
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const searchIcon = document.getElementById('search-icon');
+    const searchBar = document.getElementById('search-bar');
+
+    // Toggle search bar visibility
+    searchIcon.addEventListener('click', () => {
+        searchBar.style.display = searchBar.style.display === 'none' ? 'block' : 'none';
+    });
+});
+document.getElementById('calendar-icon').addEventListener('click', () => {
+    window.location.href = 'calendar.html';
+});
+document.addEventListener('DOMContentLoaded', function () {
+    const calendarIcon = document.getElementById('calendar-icon');
+    const calendarModal = document.getElementById('calendar-modal');
+    const closeCalendar = document.getElementById('close-calendar');
+
+    // Mostrar el calendario al hacer clic en el icono
+    calendarIcon.addEventListener('click', () => {
+        calendarModal.style.display = 'flex';
+    });
+
+    // Ocultar el calendario al hacer clic en la "X"
+    closeCalendar.addEventListener('click', () => {
+        calendarModal.style.display = 'none';
+    });
+
+    // Inicializar el calendario
+    const calendarEl = document.getElementById('calendar');
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        events: [
+            { title: 'Evento 1', start: '2024-12-20' },
+            { title: 'Evento 2', start: '2024-12-25' },
+            { title: 'Evento 3', start: '2024-12-31' }
+        ]
+    });
+    calendar.render();
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const searchIcon = document.getElementById('search-icon');
+    const searchBar = document.getElementById('search-bar');
+
+    // Toggle search bar visibility
+    searchIcon.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevenir cualquier comportamiento por defecto
+        searchBar.style.display = searchBar.style.display === 'none' || searchBar.style.display === '' ? 'block' : 'none';
+    });
+
+    // Cierra la barra de búsqueda si haces clic fuera de ella
+    document.addEventListener('click', (e) => {
+        if (!searchBar.contains(e.target) && e.target !== searchIcon) {
+            searchBar.style.display = 'none';
+        }
+    });
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('auth-modal');
+    const closeModal = document.getElementById('close-modal');
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+
+    // Mostrar el modal con el formulario de Login
+    document.getElementById('login-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.style.display = 'flex';
+        loginForm.style.display = 'flex';
+        signupForm.style.display = 'none';
+    });
+
+    // Mostrar el modal con el formulario de Sign Up
+    document.getElementById('signup-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.style.display = 'flex';
+        signupForm.style.display = 'flex';
+        loginForm.style.display = 'none';
+    });
+
+    // Cerrar el modal
+    closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
+
+    // Cerrar el modal al hacer clic fuera de él
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+});

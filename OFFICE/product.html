@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="styles.css">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Black Room</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- SwiperJS CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <!-- SwiperJS JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+    <!-- Modal Background -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form">
+                <h3>Login</h3>
+                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <!-- Registration Form -->
+            <form id="signup-form" class="auth-form">
+                <h3>Sign Up</h3>
+                <input type="text" id="signup-name" placeholder="Name" required>
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login / Sign Up Modal</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!-- Sticky Navigation -->
+        <nav class="sticky-nav">
+            <div class="nav-links">
+                <a href="index.html">Inicio</a>
+                <a href="videos.html">Videos</a>
+                <a href="#events">Events</a>
+                <a href="#shop">Shop</a>
+                <a href="#calendar">Calendar</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="auth-buttons">
+                <a href="#" id="login-btn" class="nav-btn login-btn">Login</a>
+                <a href="#" id="signup-btn" class="nav-btn signup-btn">Sign Up</a>
+            </div>
+        </nav>
+    
+        <!-- Modal Structure -->
+<div id="auth-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="close-modal">&times;</span>
+
+        <!-- Login Form -->
+        <form id="login-form" class="auth-form">
+            <h3>Login</h3>
+            <input type="email" id="login-email" placeholder="Email" required>
+            <input type="password" id="login-password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Registration Form -->
+        <form id="signup-form" class="auth-form">
+            <h3>Sign Up</h3>
+            <input type="text" id="signup-name" placeholder="Name" required>
+            <input type="email" id="signup-email" placeholder="Email" required>
+            <input type="password" id="signup-password" placeholder="Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
+
+    <style>
+        body {
+            background-color: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .product-header {
+            text-align: center;
+            padding: 20px 0;
+            background: black;
+            border-bottom: 1px solid #444;
+        }
+
+        .product-header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .product-image {
+            flex: 1 1 300px;
+            text-align: center;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+
+        .product-details {
+            flex: 1 1 300px;
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .product-details h2 {
+            margin: 0 0 10px;
+        }
+
+        .product-details .price {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .product-details button {
+            background: #e74c3c;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .product-details button:hover {
+            background: #c0392b;
+        }
+
+        /* You May Also Like Section */
+        .suggested-products {
+            margin: 40px 20px;
+            text-align: center;
+        }
+
+        .suggested-products h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .suggested-products .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .suggested-products .product-card {
+            background: #222;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .suggested-products .product-card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .suggested-products .product-card h4 {
+            margin: 0 0 5px;
+        }
+
+        .suggested-products .product-card p {
+            margin: 0;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <header class="product-header">
+        <h1>Product Details</h1>
+    </header>
+
+    <main>
+        <div class="product-container">
+            <div class="product-image">
+                <img src="https://via.placeholder.com/300x400" alt="Product Image">
+            </div>
+            <div class="product-details">
+                <h2>Classic Sleeveless</h2>
+                <p class="price">$200.00</p>
+                <p>Unisex sleeveless in 100% cotton. Logo embroidery on the front. Printed on the back. Made in Turkey.</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="suggested-products">
+            <h3>You May Also Like</h3>
+            <div class="product-grid">
+                <!-- Suggested Product 1 -->
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200x300" alt="Suggested Product">
+                    <h4>Afterlife Tee</h4>
+                    <p>$240.00</p>
+                </div>
+                <!-- Suggested Product 2 -->
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200x300" alt="Suggested Product">
+                    <h4>Classic Tee</h4>
+                    <p>$225.00</p>
+                </div>
+                <!-- Suggested Product 3 -->
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/200x300" alt="Suggested Product">
+                    <h4>Dadcap</h4>
+                    <p>$28.00</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
