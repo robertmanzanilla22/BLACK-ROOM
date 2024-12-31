@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta 
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>The Black Room</title>
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+
+  <!-- Swiper CSS -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+  />
+
+  <style>
+    /* ================================
+       RESET & GENERAL
+    ================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      line-height: 1.5;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #e74c3c;
+    }
+
+    /* ================================
+       STICKY NAV
+    ================================== */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 15, 15, 0.9);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #333;
+      z-index: 999;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .nav-links a {
+      text-transform: uppercase;
+      color: #bbb;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+    .nav-links a:hover {
+      color: #fff;
+    }
+    .auth-buttons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .nav-btn {
+      background: #e74c3c;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.6rem 1rem;
+      border-radius: 3px;
+      transition: background 0.3s;
+    }
+    .nav-btn:hover {
+      background: #c0392b;
+    }
+    .calendar-icon {
+      color: #e74c3c;
+      font-size: 1.2rem;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+    .calendar-icon:hover {
+      color: #fff;
+    }
+    .search-container {
+      position: relative;
+    }
+    .search-icon {
+      color: #e74c3c;
+      transition: color 0.3s;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .search-icon:hover {
+      color: #fff;
+    }
+    .search-bar {
+      position: absolute;
+      top: 110%;
+      right: 0;
+      background: #1b1b1b;
+      border: 1px solid #444;
+      border-radius: 4px;
+      padding: 10px;
+      display: none;
+    }
+    .search-bar input {
+      width: 200px;
+      padding: 8px;
+      border: none;
+      border-radius: 3px;
+      background: #333;
+      color: #fff;
+      outline: none;
+      font-size: 0.9rem;
+    }
+
+    /* ================================
+       MODAL (Login / Sign Up)
+    ================================== */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+    .modal-content {
+      background: #1b1b1b;
+      padding: 2rem;
+      border-radius: 4px;
+      width: 300px;
+      text-align: center;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .close-btn:hover {
+      color: #e74c3c;
+    }
+    .auth-form {
+      display: none;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .auth-form h3 {
+      margin-top: 0;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #e74c3c;
+    }
+    .auth-form input {
+      padding: 0.8rem;
+      border: 1px solid #444;
+      border-radius: 3px;
+      background: #333;
+      color: #fff;
+      outline: none;
+      font-size: 0.9rem;
+    }
+    .auth-form button {
+      padding: 0.8rem;
+      background: #e74c3c;
+      border: none;
+      border-radius: 3px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .auth-form button:hover {
+      background: #c0392b;
+    }
+
+    /* ================================
+       HERO
+    ================================== */
+    .hero {
+      height: 50vh;
+      background: url('https://via.placeholder.com/1920x1080') center center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 1rem;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #ccc;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ================================
+       SECTIONS
+    ================================== */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #333;
+      padding-bottom: 0.5rem;
+      position: relative;
+    }
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: #e74c3c;
+    }
+
+    /* ================================
+       SWIPER
+    ================================== */
+    .carousel-container {
+      position: relative;
+    }
+    .swiper-container {
+      padding: 20px 0;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #e74c3c;
+      transition: color 0.3s;
+    }
+    .swiper-button-next:hover,
+    .swiper-button-prev:hover {
+      color: #fff;
+    }
+
+    /* ================================
+       CARDS (Videos, Shops, etc.)
+       - Rectangular 16:9
+       - Menos espacio entre slides
+       - Zoom in hover
+       - "Ver más" como último slide
+    ================================== */
+    .swiper-slide {
+      /* Ejemplo: 400x225 => 16:9 */
+      width: 400px !important;
+      background: #0f0f0f;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .swiper-slide img {
+      width: 100%;
+      height: 225px; /* 16:9 ratio */
+      object-fit: cover;
+      border-radius: 3px 3px 0 0;
+      transition: transform 0.3s ease;
+    }
+    .swiper-slide:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Títulos de video/evento */
+    .video-item-title,
+    .event-title {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* Events content */
+    .event-content {
+      text-align: center;
+      padding: 0.8rem;
+    }
+    .event-location {
+      font-size: 0.85rem;
+      color: #bbb;
+      margin-bottom: 0.8rem;
+    }
+    .event-btn {
+      background: #e74c3c;
+      color: #fff;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .event-btn:hover {
+      background: #c0392b;
+    }
+
+    /* "Ver más" Slide (mismo estilo) */
+    .view-more-slide {
+      display: flex !important;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 400px !important;
+      height: 225px;
+      background: transparent;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .view-more-slide a {
+      color: #e74c3c;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border: 2px solid #e74c3c;
+      border-radius: 4px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .view-more-slide a:hover {
+      background: #e74c3c;
+      color: #fff;
+    }
+
+    /* SHOP: Mantenemos el MISMO estilo de "Ver más" */
+    .view-more-slide-shop {
+      /* Simplemente reutilizamos .view-more-slide */
+    }
+
+    /* ================================
+       CONTACT FORM
+    ================================== */
+    #contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    #contact form input,
+    #contact form textarea {
+      padding: 0.8rem;
+      border: 1px solid #333;
+      background: #111;
+      color: #fff;
+      border-radius: 3px;
+      outline: none;
+      font-size: 0.9rem;
+    }
+    #contact form button {
+      padding: 0.8rem;
+      background: #e74c3c;
+      border: none;
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      align-self: flex-start;
+    }
+    #contact form button:hover {
+      background: #c0392b;
+    }
+
+    /* ================================
+       FOOTER
+    ================================== */
+    footer {
+      background: #0f0f0f;
+      text-align: center;
+      padding: 1.5rem 2rem;
+      color: #aaa;
+      border-top: 1px solid #333;
+      font-size: 0.9rem;
+    }
+    .social-icons {
+      margin-top: 1rem;
+    }
+    .social-icons a {
+      margin: 0 0.5rem;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    .social-icons a:hover {
+      opacity: 1;
+    }
+    .social-icons img {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* ================================
+       MEDIA QUERIES
+    ================================== */
+    @media (max-width: 768px) {
+      .swiper-slide {
+        width: 100% !important;
+        height: auto !important;
+      }
+      .swiper-slide img {
+        height: auto;
+      }
+      .section {
+        padding: 2rem 1rem;
+      }
+      .hero-content h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- MODAL (Login/Sign Up) -->
+  <div id="auth-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-modal">&times;</span>
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form">
+        <h3>Login</h3>
+        <input type="email" id="login-email" placeholder="Email" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button type="submit">Login</button>
+      </form>
+      <!-- Registration Form -->
+      <form id="signup-form" class="auth-form">
+        <h3>Sign Up</h3>
+        <input type="text" id="signup-name" placeholder="Name" required>
+        <input type="email" id="signup-email" placeholder="Email" required>
+        <input type="password" id="signup-password" placeholder="Password" required>
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="sticky-nav">
+    <div class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="videos.html">Videos</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="shop.html">Shop</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="auth-buttons">
+      <a href="calendar.html" class="calendar-icon" id="calendar-icon">
+        <i class="fas fa-calendar-alt"></i>
+      </a>
+      <div class="search-container">
+        <span class="search-icon" id="search-icon">
+          <i class="fas fa-search"></i>
+        </span>
+        <div class="search-bar" id="search-bar">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Buscar videos..."
+          />
+        </div>
+      </div>
+      <a href="#" id="login-btn" class="nav-btn">Login</a>
+      <a href="#" id="signup-btn" class="nav-btn">Sign Up</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Black Room</h1>
+      <p>Your gateway to underground music and exclusive events.</p>
+    </div>
+  </header>
+
+  <!-- EVENTS SECTION -->
+  <section id="events" class="section">
+    <h2 class="section-title">Upcoming Events</h2>
+    <div class="carousel-container events-swiper">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- Event 1 -->
+          <div class="swiper-slide">
+            <img src="bajo-el-sol.jpg" alt="Bajo el Sol Event">
+            <div class="event-content">
+              <h3 class="event-title">Bajo el Sol - New Year's Welcoming Rave</h3>
+              <p class="event-location">Virginia Key Park, Miami</p>
+              <a href="event-bajo-el-sol.html" class="event-btn">Buy Tickets</a>
+            </div>
+          </div>
+          <!-- Event 2 -->
+          <div class="swiper-slide">
+            <img src="tanja-miju.jpg" alt="Tanja Miju Event">
+            <div class="event-content">
+              <h3 class="event-title">Black Room x Clandestine Presents Tanja Miju</h3>
+              <p class="event-location">Miami Beach, FL</p>
+              <a href="event-tanja-miju.html" class="event-btn">Buy Tickets</a>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <img src="stan.jpg" alt="Stan Christ Event">
+            <div class="event-content">
+                <h3 class="event-title">Black Room Presents: Stan Christ</h3>
+                <p class="event-location">Miami, FL</p>
+                <a href="event-stan.html" class="event-btn">Buy Tickets</a>
+            </div>
+        </div>        
+          <!-- Ver más (Events) - MISMO ESTILO AL FINAL -->
+          <div class="swiper-slide view-more-slide">
+            <a href="events.html">Ver más eventos</a>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RADIO SECTION (10 videos) -->
+  <section id="radio" class="section">
+    <h2 class="section-title">Radio</h2>
+    <div class="carousel-container videos-swiper">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <!-- 10 videos con miniaturas correctas -->
+          <div class="swiper-slide">
+            <a href="video.html?videoId=Lr_FzTxMGRY&title=Radio%20Set%201">
+              <img src="https://img.youtube.com/vi/Lr_FzTxMGRY/hqdefault.jpg" alt="Radio Set 1">
+              <h3 class="video-item-title">Radio Set 1</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=HVIwlYgXCok&title=Radio%20Set%202">
+              <img src="https://img.youtube.com/vi/HVIwlYgXCok/hqdefault.jpg" alt="Radio Set 2">
+              <h3 class="video-item-title">Radio Set 2</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=n85C7QaAwG0&title=Radio%20Set%203">
+              <img src="https://img.youtube.com/vi/n85C7QaAwG0/hqdefault.jpg" alt="Radio Set 3">
+              <h3 class="video-item-title">Radio Set 3</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=LW92C8wx3fc&title=Radio%20Set%204">
+              <img src="https://img.youtube.com/vi/LW92C8wx3fc/hqdefault.jpg" alt="Radio Set 4">
+              <h3 class="video-item-title">Radio Set 4</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=0H2h7t8qu6M&title=Radio%20Set%205">
+              <img src="https://img.youtube.com/vi/0H2h7t8qu6M/hqdefault.jpg" alt="Radio Set 5">
+              <h3 class="video-item-title">Radio Set 5</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=-4bPIGdNJwc&title=Radio%20Set%206">
+              <img src="https://img.youtube.com/vi/-4bPIGdNJwc/hqdefault.jpg" alt="Radio Set 6">
+              <h3 class="video-item-title">Radio Set 6</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=f8GkpPINE_8&title=Radio%20Set%207">
+              <img src="https://img.youtube.com/vi/f8GkpPINE_8/hqdefault.jpg" alt="Radio Set 7">
+              <h3 class="video-item-title">Radio Set 7</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=AAqZ0CMtbrk&title=Radio%20Set%208">
+              <img src="https://img.youtube.com/vi/AAqZ0CMtbrk/hqdefault.jpg" alt="Radio Set 8">
+              <h3 class="video-item-title">Radio Set 8</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=Iiv38ni1C5U&title=Radio%20Set%209">
+              <img src="https://img.youtube.com/vi/Iiv38ni1C5U/hqdefault.jpg" alt="Radio Set 9">
+              <h3 class="video-item-title">Radio Set 9</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=2fGCpYQnFY0&title=Radio%20Set%2010">
+              <img src="https://img.youtube.com/vi/2fGCpYQnFY0/hqdefault.jpg" alt="Radio Set 10">
+              <h3 class="video-item-title">Radio Set 10</h3>
+            </a>
+          </div>
+          <!-- Ver más (Radio) como último slide a la derecha -->
+          <div class="swiper-slide view-more-slide">
+            <a href="videos.html">Ver más videos</a>
+          </div>
+        </div>
+        <!-- Flechas de Swiper -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAST EVENTS (8 videos) -->
+  <section class="section">
+    <h2 class="section-title">Past Events</h2>
+    <div class="carousel-container videos-swiper">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <a href="video.html?videoId=-7EGy2Fd1_8&title=Latest%20Video%201">
+              <img src="https://img.youtube.com/vi/-7EGy2Fd1_8/hqdefault.jpg" alt="Latest Video 1">
+              <h3 class="video-item-title">Latest Video 1</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=PooTCAT3_MI&title=Latest%20Video%202">
+              <img src="https://img.youtube.com/vi/PooTCAT3_MI/hqdefault.jpg" alt="Latest Video 2">
+              <h3 class="video-item-title">Latest Video 2</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=EXs90Nl8jkc&title=Latest%20Video%203">
+              <img src="https://img.youtube.com/vi/EXs90Nl8jkc/hqdefault.jpg" alt="Latest Video 3">
+              <h3 class="video-item-title">Latest Video 3</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=JA_UcTZgSCE&title=Latest%20Video%204">
+              <img src="https://img.youtube.com/vi/JA_UcTZgSCE/hqdefault.jpg" alt="Latest Video 4">
+              <h3 class="video-item-title">Latest Video 4</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=L0xHprbnJPk&title=Latest%20Video%205">
+              <img src="https://img.youtube.com/vi/L0xHprbnJPk/hqdefault.jpg" alt="Latest Video 5">
+              <h3 class="video-item-title">Latest Video 5</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=zDoM4_kB6XU&title=Latest%20Video%206">
+              <img src="https://img.youtube.com/vi/zDoM4_kB6XU/hqdefault.jpg" alt="Latest Video 6">
+              <h3 class="video-item-title">Latest Video 6</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=tMNI2gwQZGw&title=Latest%20Video%207">
+              <img src="https://img.youtube.com/vi/tMNI2gwQZGw/hqdefault.jpg" alt="Latest Video 7">
+              <h3 class="video-item-title">Latest Video 7</h3>
+            </a>
+          </div>
+          <div class="swiper-slide">
+            <a href="video.html?videoId=X4JskmCsGOA&title=Latest%20Video%208">
+              <img src="https://img.youtube.com/vi/X4JskmCsGOA/hqdefault.jpg" alt="Latest Video 8">
+              <h3 class="video-item-title">Latest Video 8</h3>
+            </a>
+          </div>
+          <!-- Ver más (Past Events) como último slide -->
+          <div class="swiper-slide view-more-slide">
+            <a href="videos.html">Ver más videos</a>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP SECTION (2 productos + ver más MISMO estilo) -->
+  <section id="shop" class="section">
+    <h2 class="section-title">Shop</h2>
+    <div class="carousel-container shop-swiper">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="https://via.placeholder.com/400x225" alt="Black Room T-Shirt">
+            <h3>Black Room T-Shirt</h3>
+            <p>$30.00</p>
+            <button>Add to Cart</button>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://via.placeholder.com/400x225" alt="Exclusive Hoodie">
+            <h3>Exclusive Hoodie</h3>
+            <p>$50.00</p>
+            <button>Add to Cart</button>
+          </div>
+          <!-- Ver más (Shop) - MISMO estilo -->
+          <div class="swiper-slide view-more-slide view-more-slide-shop">
+            <a href="shop.html">Ver más</a>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="section">
+    <h2 class="section-title">Contact Us</h2>
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2024 The Black Room. All rights reserved.</p>
+    <div class="social-icons">
+      <a href="https://instagram.com" target="_blank">
+        <img src="icons/instagram.png" alt="Instagram">
+      </a>
+      <a href="https://facebook.com" target="_blank">
+        <img src="icons/facebook.png" alt="Facebook">
+      </a>
+      <a href="https://youtube.com" target="_blank">
+        <img src="icons/youtube.png" alt="YouTube">
+      </a>
+    </div>
+  </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* ==== Modal Logic ==== */
+      const modal = document.getElementById('auth-modal');
+      const closeModal = document.getElementById('close-modal');
+      const loginForm = document.getElementById('login-form');
+      const signupForm = document.getElementById('signup-form');
+
+      // Abrir Modal: Login
+      document.getElementById('login-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.style.display = 'flex';
+        loginForm.style.display = 'flex';
+        signupForm.style.display = 'none';
+      });
+      // Abrir Modal: Sign Up
+      document.getElementById('signup-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.style.display = 'flex';
+        signupForm.style.display = 'flex';
+        loginForm.style.display = 'none';
+      });
+      // Cerrar Modal
+      closeModal.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+      // Cerrar al hacer click fuera
+      window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.style.display = 'none';
+        }
+      });
+
+      /* ==== Search Bar Toggle ==== */
+      const searchIcon = document.getElementById('search-icon');
+      const searchBar = document.getElementById('search-bar');
+      searchIcon.addEventListener('click', () => {
+        if (!searchBar.style.display || searchBar.style.display === 'none') {
+          searchBar.style.display = 'block';
+        } else {
+          searchBar.style.display = 'none';
+        }
+      });
+
+      /* ==== Swiper Config (menos espacio) ==== */
+      const swiperConfig = {
+        slidesPerView: 'auto',
+        spaceBetween: 10,
+        loop: false,
+        navigation: true
+      };
+
+      // EVENTS
+      new Swiper('.events-swiper .swiper-container', {
+        ...swiperConfig,
+        navigation: {
+          nextEl: '.events-swiper .swiper-button-next',
+          prevEl: '.events-swiper .swiper-button-prev'
+        }
+      });
+
+      // RADIO
+      new Swiper('#radio .swiper-container', {
+        ...swiperConfig,
+        navigation: {
+          nextEl: '#radio .swiper-button-next',
+          prevEl: '#radio .swiper-button-prev'
+        }
+      });
+
+      // PAST EVENTS & SHOP
+      const sections = document.querySelectorAll('.section');
+      sections.forEach((sec) => {
+        const titleElem = sec.querySelector('.section-title');
+        if (titleElem) {
+          const text = titleElem.innerText.trim().toLowerCase();
+          if (text.includes('past events')) {
+            new Swiper(sec.querySelector('.swiper-container'), {
+              ...swiperConfig,
+              navigation: {
+                nextEl: sec.querySelector('.swiper-button-next'),
+                prevEl: sec.querySelector('.swiper-button-prev')
+              }
+            });
+          }
+          if (text.includes('shop')) {
+            new Swiper(sec.querySelector('.swiper-container'), {
+              ...swiperConfig,
+              navigation: {
+                nextEl: sec.querySelector('.swiper-button-next'),
+                prevEl: sec.querySelector('.swiper-button-prev')
+              }
+            });
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
